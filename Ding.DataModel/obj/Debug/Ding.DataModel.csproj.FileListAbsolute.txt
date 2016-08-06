@@ -1,0 +1,10 @@
+D:\ing\DingCrm\Ding.DataModel\bin\Debug\Ding.DataModel.dll.config
+D:\ing\DingCrm\Ding.DataModel\bin\Debug\Ding.DataModel.dll
+D:\ing\DingCrm\Ding.DataModel\bin\Debug\Ding.DataModel.pdb
+D:\ing\DingCrm\Ding.DataModel\bin\Debug\EntityFramework.dll
+D:\ing\DingCrm\Ding.DataModel\bin\Debug\EntityFramework.SqlServer.dll
+D:\ing\DingCrm\Ding.DataModel\bin\Debug\EntityFramework.xml
+D:\ing\DingCrm\Ding.DataModel\bin\Debug\EntityFramework.SqlServer.xml
+D:\ing\DingCrm\Ding.DataModel\obj\Debug\Ding.DataModel.csprojResolveAssemblyReference.cache
+D:\ing\DingCrm\Ding.DataModel\obj\Debug\Ding.DataModel.dll
+D:\ing\DingCrm\Ding.DataModel\obj\Debug\Ding.DataModel.pdb

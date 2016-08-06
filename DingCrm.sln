@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ding.DataModel", "Ding.DataModel\Ding.DataModel.csproj", "{439A2E22-8198-4B3A-9131-BC0B78C37AEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ding.View", "Ding.View\Ding.View.csproj", "{A7D98F03-113B-47AF-93B8-983BC88D3687}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{439A2E22-8198-4B3A-9131-BC0B78C37AEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{439A2E22-8198-4B3A-9131-BC0B78C37AEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{439A2E22-8198-4B3A-9131-BC0B78C37AEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{439A2E22-8198-4B3A-9131-BC0B78C37AEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7D98F03-113B-47AF-93B8-983BC88D3687}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7D98F03-113B-47AF-93B8-983BC88D3687}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7D98F03-113B-47AF-93B8-983BC88D3687}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7D98F03-113B-47AF-93B8-983BC88D3687}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

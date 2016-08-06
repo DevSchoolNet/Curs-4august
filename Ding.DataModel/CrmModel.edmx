@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DingCrmModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="DingCrmModelStoreContainer">
+          <EntitySet Name="Customer" EntityType="DingCrmModel.Store.Customer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PF" EntityType="DingCrmModel.Store.PF" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PJ" EntityType="DingCrmModel.Store.PJ" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User" EntityType="DingCrmModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Customer_User" Association="DingCrmModel.Store.FK_Customer_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PF_Customer" Association="DingCrmModel.Store.FK_PF_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="PF" EntitySet="PF" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PJ_Customer" Association="DingCrmModel.Store.FK_PJ_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="PJ" EntitySet="PJ" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CUI" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PF">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PJ">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="CustomerName" Type="nvarchar" Nullable="false" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="IsEnable" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Customer_User">
+          <End Role="User" Type="DingCrmModel.Store.User" Multiplicity="1" />
+          <End Role="Customer" Type="DingCrmModel.Store.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PF_Customer">
+          <End Role="Customer" Type="DingCrmModel.Store.Customer" Multiplicity="1" />
+          <End Role="PF" Type="DingCrmModel.Store.PF" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="PF">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PJ_Customer">
+          <End Role="Customer" Type="DingCrmModel.Store.Customer" Multiplicity="1" />
+          <End Role="PJ" Type="DingCrmModel.Store.PJ" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="PJ">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DingCrmModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Customer" EntityType="DingCrmModel.Customer" />
+          <EntitySet Name="PF" EntityType="DingCrmModel.PF" />
+          <EntitySet Name="PJ" EntityType="DingCrmModel.PJ" />
+          <EntitySet Name="User" EntityType="DingCrmModel.User" />
+          <AssociationSet Name="FK_Customer_User" Association="DingCrmModel.FK_Customer_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PF_Customer" Association="DingCrmModel.FK_PF_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="PF" EntitySet="PF" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PJ_Customer" Association="DingCrmModel.FK_PJ_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="PJ" EntitySet="PJ" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CUI" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="User" Relationship="DingCrmModel.FK_Customer_User" FromRole="Customer" ToRole="User" />
+          <NavigationProperty Name="PF" Relationship="DingCrmModel.FK_PF_Customer" FromRole="Customer" ToRole="PF" />
+          <NavigationProperty Name="PJ" Relationship="DingCrmModel.FK_PJ_Customer" FromRole="Customer" ToRole="PJ" />
+        </EntityType>
+        <EntityType Name="PF">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Customer" Relationship="DingCrmModel.FK_PF_Customer" FromRole="PF" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="PJ">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="CustomerName" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Customer" Relationship="DingCrmModel.FK_PJ_Customer" FromRole="PJ" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="IsEnable" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="DingCrmModel.FK_Customer_User" FromRole="User" ToRole="Customer" />
+        </EntityType>
+        <Association Name="FK_Customer_User">
+          <End Role="User" Type="DingCrmModel.User" Multiplicity="1" />
+          <End Role="Customer" Type="DingCrmModel.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PF_Customer">
+          <End Role="Customer" Type="DingCrmModel.Customer" Multiplicity="1" />
+          <End Role="PF" Type="DingCrmModel.PF" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="PF">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PJ_Customer">
+          <End Role="Customer" Type="DingCrmModel.Customer" Multiplicity="1" />
+          <End Role="PJ" Type="DingCrmModel.PJ" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="PJ">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DingCrmModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Customer">
+            <EntityTypeMapping TypeName="DingCrmModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CUI" ColumnName="CUI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PF">
+            <EntityTypeMapping TypeName="DingCrmModel.PF">
+              <MappingFragment StoreEntitySet="PF">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PJ">
+            <EntityTypeMapping TypeName="DingCrmModel.PJ">
+              <MappingFragment StoreEntitySet="PJ">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="DingCrmModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
